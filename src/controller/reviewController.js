@@ -118,7 +118,7 @@ const deleteReview = async function (req, res) {
   try {
     let bookId = req.params.bookId
     let reviewId = req.params.reviewId
-    let deletedAt = Date.now('YYYY/MM/DD:mm:ss')
+    let deletedAt= new Date()
     //check bookId is valid or not
     if (!ObjectId.isValid(bookId)) return res.status(400).send({ status: false, message: "Bookid is invalid" })
     //check bookId is valid or not
@@ -139,7 +139,7 @@ const deleteReview = async function (req, res) {
     if (review.bookId != bookId) return res.status(400).send({ status: false, message: "the review doesnt belong to this book or vice versa,change the given id" })
    
     //update the status of isDeleted to TRUE
-    let updatedData = await reviewModel.findOneAndUpdate({ _id: reviewId }, { isDeleted: true }, deletedAt,{ new: true });
+    let updatedData = await reviewModel.findOneAndUpdate({ _id: reviewId }, { isDeleted: true }, { new: true });
     book.reviews--;
     await book.save();
 

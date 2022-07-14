@@ -188,14 +188,12 @@ const updateBooks = async function (req, res) {
 const deleteBook = async function (req, res) {
     try {
         let bookId = req.params.bookId
-        let deletedAt = Date.now('YYYY/MM/DD:mm:ss')
-        //let update = { isDeleted: true, deletedAt: time }
-
+        // find the book in DB
         let book = await bookModel.findById(bookId) 
         //check if isDeleated Status is True
         if (book.isDeleted == true) return res.status(404).send({ status: false, message: "the book is already deleted" })
         //update the status of isDeleted to TRUE
-        let updatedData = await bookModel.findOneAndUpdate({ _id: bookId },{isDeleted: false }, deletedAt, { new: true });
+        let updatedData = await bookModel.findOneAndUpdate({ _id: bookId },{isDeleted: true, deletedAt: new Date()},  { new: true });
         return res.status(200).send({ status: true, msg: "successfuly Deleted" });
     }
     catch (error) {
