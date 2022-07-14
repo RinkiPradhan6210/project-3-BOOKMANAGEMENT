@@ -1,5 +1,23 @@
-{
-  "dependencies": {
+  {
+    "name": "project3-bookmanagementgroup30",
+    "version": "1.0.0",
+    "description": "project2/internshipGroup30",
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/RinkiPradhan6210/project3-bookmanagementgroup30"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/RinkiPradhan6210/project3-bookmanagementGroup30/issues"
+    },
+    "homepage": "https://github.com/RinkiPradhan6210/project3-bookmanagementGroup30#readme",
+    "dependencies": {
     "email-validator": "^2.0.4",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",

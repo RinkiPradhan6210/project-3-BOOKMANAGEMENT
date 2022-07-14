@@ -48,7 +48,7 @@ const authorisation = async function (req, res, next) {
           if (req.body.userId) {
             //console.log(req.body.userId)
             if (decodedToken.userId != (req.body.userId)) {
-                return res.status(400).send({ status: false, msg: "token userid and req.body id is not matched" })
+                return res.status(403).send({ status: false, msg: "token userid and req.body id is not matched" })
             }
             return next()
         }
@@ -66,7 +66,7 @@ const authorisation = async function (req, res, next) {
             }
             
             if (decodedToken.userId != userData.userId) {
-                return res.status(400).send({ status: false, msg: "token user id and req.body id is not matched require authorization" })
+                return res.status(403).send({ status: false, msg: "token user id and req.body id is not matched require authorization" })
             }
             return next()
         }

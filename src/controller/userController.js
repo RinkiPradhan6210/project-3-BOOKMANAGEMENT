@@ -78,10 +78,12 @@ const userRegistartion = async function (req, res) {
 const userLogin = async function (req, res) {
   try {
     let data = req.body;
+    //check body is empty or not
     if (Object.keys(data).length == 0) return res.status(400).send({ status: false, msg: 'request body cant be empty' })
+    //check mail is presenet or not
     let userMail = req.body.email;
     if (!userMail) return res.status(400).send({ status: false, msg: 'please enter email' })
-
+    //check mail is presenet or not
     let userPassword = req.body.password;
     if (!userPassword) return res.status(400).send({ status: false, msg: 'please enter password' })
     // find the object as per email & password
@@ -90,7 +92,7 @@ const userLogin = async function (req, res) {
     if (!findUser) return res.status(404).send({ status: false, msg: 'no such user exists, invalid email or password ' })
 
 
-
+   //create token
     let token = jwt.sign(
       {
         userId: findUser._id.toString(),
